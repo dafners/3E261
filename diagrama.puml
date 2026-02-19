@@ -1,0 +1,75 @@
+class Guardia
+class Personaje
+class Animatronico
+class AnimatronicoOriginal
+class AnimatronicoToy
+class Freddy
+class ToyFreddy
+class Bonnie
+class ToyBonnie
+class Chica
+class ToyChica
+class Foxy
+class Mangle
+class GoldenFreddy
+class BalloonBoy
+class Marionette
+class Oficina
+class Camara
+class Ventilacion
+class Puerta
+class Luz
+class Energia
+class Mascara
+class CajaMusical
+class MusicBox
+class Noche
+class JumpScare
+class Escenario
+class Pasillo
+class Bateria
+
+Guardia            --|> Personaje
+
+Animatronico         --|> Personaje
+AnimatronicoOriginal --|> Animatronico
+AnimatronicoToy  --|> Animatronico
+
+Freddy             --|> AnimatronicoOriginal
+Bonnie             --|> AnimatronicoOriginal
+Chica              --|> AnimatronicoOriginal
+Foxy               --|> AnimatronicoOriginal
+GoldenFreddy       --|> AnimatronicoOriginal
+
+ToyFreddy          --|> AnimatronicoToy
+ToyBonnie          --|> AnimatronicoToy
+ToyChica           --|> AnimatronicoToy
+Mangle             --|> AnimatronicoToy
+BalloonBoy         --|> AnimatronicoToy
+Marionette         --|> AnimatronicoToy
+
+Oficina      *-- Camara
+Oficina      *-- Ventilacion
+Oficina      *-- Puerta
+Oficina      *-- Luz
+Oficina      *-- Energia
+Oficina      *-- Mascara
+Oficina      *-- MusicBox
+Noche        *-- Guardia
+Noche        *-- Energia
+Noche        *-- Bateria
+Escenario    *-- Animatronico
+Pasillo      *-- Luz
+CajaMusical  *-- MusicBox
+
+Guardia      o-- Camara
+Guardia      o-- Mascara
+Guardia      o-- MusicBox
+Guardia      o-- Luz
+Guardia      o-- Energia
+Animatronico o-- Pasillo
+Animatronico o-- Ventilacion
+Animatronico o-- JumpScare
+Marionette   o-- CajaMusical
+BalloonBoy   o-- Energia
+Noche        o-- JumpScare
