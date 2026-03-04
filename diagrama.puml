@@ -1,6 +1,14 @@
 @startuml diagrama
 
-class Guardia
+class Usuario
+class Guardia{
+  + Camara : Ver(Camara)
+  + Mascara : Usar(Mascara)
+  + MusicBox : Girar(MusicBox)
+  + Luz : Activar(Luz)
+  + Energia : Ver(Energia)
+}
+
 class Personaje
 class Animatronico
 class AnimatronicoOriginal
@@ -15,8 +23,21 @@ class Foxy
 class Mangle
 class GoldenFreddy
 class BalloonBoy
-class Marionette
-class Oficina
+
+class Marionette{
+  + Jumpscare : Controlar(CajaMusical)
+}
+
+class Oficina{
+  - Camara camara
+  - Ventilacion ventilacion[2]
+  - Puerta puerta
+  - Luz luz[3]
+  - Energia energia
+  - Mascara mascara
+  - MusicBox musicBox
+}
+
 class Camara
 class Ventilacion
 class Puerta
