@@ -1,16 +1,29 @@
 @startuml diagrama
 
-class Usuario
-class Guardia{
-  + Camara : Ver(Camara)
-  + Mascara : Usar(Mascara)
-  + MusicBox : Girar(MusicBox)
-  + Luz : Activar(Luz)
-  + Energia : Ver(Energia)
+class Guardia {
+  - Camara camara[]
+  - Mascara mascara
+  - MusicBox musicBox
+  - Luz luz[]
+  - Energia energia
+  + monitorear(Camara)
+  + poner(Mascara)
+  + escuchar(MusicBox)
+  + encender(Luz)
+  + verificar(Energia)
 }
 
 class Personaje
-class Animatronico
+
+class Animatronico {
+  - Pasillo pasillo
+  - Ventilacion ventilacion
+  - JumpScare jumpScare
+  + mover(Pasillo)
+  + mover(Ventilacion)
+  + asustar(JumpScare)
+}
+
 class AnimatronicoOriginal
 class AnimatronicoToy
 class Freddy
@@ -22,17 +35,22 @@ class ToyChica
 class Foxy
 class Mangle
 class GoldenFreddy
-class BalloonBoy
 
-class Marionette{
-  + Jumpscare : Controlar(CajaMusical)
+class BalloonBoy {
+  - Energia energia
+  + consumir(Energia)
 }
 
-class Oficina{
-  - Camara camara
-  - Ventilacion ventilacion[2]
+class Marionette {
+  - CajaMusical cajaMusical
+  + activar(CajaMusical)
+}
+
+class Oficina {
+  - Camara camara[]
+  - Ventilacion ventilacion
   - Puerta puerta
-  - Luz luz[3]
+  - Luz luz[]
   - Energia energia
   - Mascara mascara
   - MusicBox musicBox
@@ -44,26 +62,42 @@ class Puerta
 class Luz
 class Energia
 class Mascara
-class CajaMusical
+
+class CajaMusical {
+  - MusicBox musicBox
+}
+
 class MusicBox
-class Noche
+
+class Noche {
+  - Guardia guardia
+  - Energia energia
+  - Bateria bateria
+  - JumpScare jumpScare[]
+  + ejecutar(JumpScare)
+}
+
 class JumpScare
-class Escenario
-class Pasillo
+
+class Escenario {
+  - Animatronico animatronico[]
+}
+
+class Pasillo {
+  - Luz luz[]
+}
+
 class Bateria
 
 Guardia            --|> Personaje
-
 Animatronico         --|> Personaje
 AnimatronicoOriginal --|> Animatronico
 AnimatronicoToy  --|> Animatronico
-
 Freddy             --|> AnimatronicoOriginal
 Bonnie             --|> AnimatronicoOriginal
 Chica              --|> AnimatronicoOriginal
 Foxy               --|> AnimatronicoOriginal
 GoldenFreddy       --|> AnimatronicoOriginal
-
 ToyFreddy          --|> AnimatronicoToy
 ToyBonnie          --|> AnimatronicoToy
 ToyChica           --|> AnimatronicoToy
