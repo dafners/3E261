@@ -68,8 +68,8 @@ class Mascara {
 
 class CajaMusical {
   - MusicBox musicBox
-  + activar(Marionette)
-  + escuchar(Guardia)
+  + Activar(Marionette)
+  + Escuchar(Guardia)
 }
 
 class MusicBox
@@ -79,11 +79,11 @@ class Noche {
   - Energia energia
   - Bateria bateria
   - JumpScare jumpScare[]
-  + ejecutar(JumpScare)
 }
 
 class JumpScare {
   + Asustar(Animatrónico)
+  + Ejecutar(Noche)
 }
 
 class Escenario {
