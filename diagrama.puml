@@ -6,11 +6,6 @@ class Guardia {
   - MusicBox musicBox
   - Luz luz[]
   - Energia energia
-  + monitorear(Camara)
-  + poner(Mascara)
-  + escuchar(MusicBox)
-  + encender(Luz)
-  + verificar(Energia)
 }
 
 class Personaje
@@ -19,9 +14,6 @@ class Animatronico {
   - Pasillo pasillo
   - Ventilacion ventilacion
   - JumpScare jumpScare
-  + mover(Pasillo)
-  + mover(Ventilacion)
-  + asustar(JumpScare)
 }
 
 class AnimatronicoOriginal
@@ -38,12 +30,10 @@ class GoldenFreddy
 
 class BalloonBoy {
   - Energia energia
-  + consumir(Energia)
 }
 
 class Marionette {
   - CajaMusical cajaMusical
-  + activar(CajaMusical)
 }
 
 class Oficina {
@@ -56,15 +46,30 @@ class Oficina {
   - MusicBox musicBox
 }
 
-class Camara
-class Ventilacion
+class Camara {
+  + Monitorear(Guardia)
+}
+class Ventilacion {
+  + Mover(Animatronico)
+}
 class Puerta
-class Luz
-class Energia
-class Mascara
+class Luz {
+  + Encender(Guardia)
+}
+
+class Energia {
+  + Consumir(BalloonBoy)
+  + Verificar(Guardia)
+}
+
+class Mascara {
+  + Poner(Guardia)
+}
 
 class CajaMusical {
   - MusicBox musicBox
+  + activar(Marionette)
+  + escuchar(Guardia)
 }
 
 class MusicBox
@@ -77,7 +82,9 @@ class Noche {
   + ejecutar(JumpScare)
 }
 
-class JumpScare
+class JumpScare {
+  + Asustar(Animatrónico)
+}
 
 class Escenario {
   - Animatronico animatronico[]
@@ -85,6 +92,7 @@ class Escenario {
 
 class Pasillo {
   - Luz luz[]
+  + Mover(Animatrónico)
 }
 
 class Bateria
