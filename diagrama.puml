@@ -82,7 +82,7 @@ class Noche {
 }
 
 class JumpScare {
-  + Asustar(Animatrónico)
+  + Asustar(Animatronico)
   + Ejecutar(Noche)
 }
 
@@ -92,15 +92,15 @@ class Escenario {
 
 class Pasillo {
   - Luz luz[]
-  + Mover(Animatrónico)
+  + Mover(Animatronico)
 }
 
 class Bateria
 
 Guardia            --|> Personaje
-Animatronico         --|> Personaje
+Animatronico       --|> Personaje
 AnimatronicoOriginal --|> Animatronico
-AnimatronicoToy  --|> Animatronico
+AnimatronicoToy    --|> Animatronico
 Freddy             --|> AnimatronicoOriginal
 Bonnie             --|> AnimatronicoOriginal
 Chica              --|> AnimatronicoOriginal
@@ -114,29 +114,29 @@ BalloonBoy         --|> AnimatronicoToy
 Marionette         --|> AnimatronicoToy
 
 Oficina      "1" *-- "1..*" Camara
-Oficina      "1" *-- "1" Ventilacion
-Oficina      "1" *-- "1" Puerta
+Oficina      "1" *-- "1"   Ventilacion
+Oficina      "1" *-- "1"   Puerta
 Oficina      "1" *-- "1..*" Luz
-Oficina      "1" *-- "1" Energia
-Oficina      "1" *-- "1" Mascara
-Oficina      "1" *-- "1" MusicBox
-Noche        "1" *-- "1" Guardia
-Noche        "1" *-- "1" Energia
-Noche        "1" *-- "1" Bateria
+Oficina      "1" *-- "1"   Energia
+Oficina      "1" *-- "1"   Mascara
+Oficina      "1" *-- "1"   MusicBox
+Noche        "1" *-- "1"   Guardia
+Noche        "1" *-- "1"   Energia
+Noche        "1" *-- "1"   Bateria
 Escenario    "1" *-- "1..*" Animatronico
 Pasillo      "1" *-- "1..*" Luz
-CajaMusical  "1" *-- "1" MusicBox
+CajaMusical  "1" *-- "1"   MusicBox
 
 Guardia      "1" o-- "1..*" Camara
-Guardia      "1" o-- "1" Mascara
-Guardia      "1" o-- "1" MusicBox
+Guardia      "1" o-- "1"   Mascara
+Guardia      "1" o-- "1"   MusicBox
 Guardia      "1" o-- "1..*" Luz
-Guardia      "1" o-- "1" Energia
-Animatronico "1..*" o-- "0..1" Pasillo
-Animatronico "1..*" o-- "0..1" Ventilacion
+Guardia      "1" o-- "1"   Energia
+Animatronico "1" o-- "0..1" Pasillo
+Animatronico "1" o-- "0..1" Ventilacion
 Animatronico "1" o-- "0..1" JumpScare
-Marionette   "1" o-- "1" CajaMusical
-BalloonBoy   "1" o-- "1" Energia
+Marionette   "1" o-- "1"   CajaMusical
+BalloonBoy   "1" o-- "1"   Energia
 Noche        "1" o-- "0..*" JumpScare
 
 @enduml
