@@ -1,11 +1,11 @@
-@startuml diagrama
+@startuml diagramafnaf2
 
 class Guardia {
   - Camara camara[]
   - Mascara mascara
   - MusicBox musicBox
+  - Linterna linterna
   - Luz luz[]
-  - Energia energia
 }
 
 class Personaje
@@ -29,19 +29,19 @@ class Mangle
 class GoldenFreddy
 
 class BalloonBoy {
-  - Energia energia
+  - Linterna linterna
 }
 
 class Marionette {
-  - CajaMusical cajaMusical
+  - MusicBox musicBox
+  - PrizeCorner prizeCorner
 }
 
 class Oficina {
   - Camara camara[]
   - Ventilacion ventilacion
-  - Puerta puerta
+  - Linterna linterna
   - Luz luz[]
-  - Energia energia
   - Mascara mascara
   - MusicBox musicBox
 }
@@ -52,33 +52,27 @@ class Camara {
 class Ventilacion {
   + Mover(Animatronico)
 }
-class Puerta
+class Linterna {
+  + Alumbrar(Guardia)
+}
 class Luz {
   + Encender(Guardia)
 }
-
-class Energia {
-  + Consumir(BalloonBoy)
-  + Verificar(Guardia)
-}
-
 class Mascara {
   + Poner(Guardia)
 }
 
-class CajaMusical {
-  - MusicBox musicBox
+class MusicBox {
   + Activar(Marionette)
   + Escuchar(Guardia)
 }
 
-class MusicBox
-
 class Noche {
   - Guardia guardia
-  - Energia energia
   - Bateria bateria
   - JumpScare jumpScare[]
+  - Turno turno
+  - Escenario escenario
 }
 
 class JumpScare {
@@ -97,46 +91,56 @@ class Pasillo {
 
 class Bateria
 
-Guardia            --|> Personaje
-Animatronico       --|> Personaje
+class PrizeCorner {
+  - MusicBox musicBox
+}
+
+class Turno {
+  + Iniciar()
+  + Terminar()
+}
+
+Guardia              --|> Personaje
+Animatronico         --|> Personaje
 AnimatronicoOriginal --|> Animatronico
-AnimatronicoToy    --|> Animatronico
-Freddy             --|> AnimatronicoOriginal
-Bonnie             --|> AnimatronicoOriginal
-Chica              --|> AnimatronicoOriginal
-Foxy               --|> AnimatronicoOriginal
-GoldenFreddy       --|> AnimatronicoOriginal
-ToyFreddy          --|> AnimatronicoToy
-ToyBonnie          --|> AnimatronicoToy
-ToyChica           --|> AnimatronicoToy
-Mangle             --|> AnimatronicoToy
-BalloonBoy         --|> AnimatronicoToy
-Marionette         --|> AnimatronicoToy
+AnimatronicoToy      --|> Animatronico
+Freddy               --|> AnimatronicoOriginal
+Bonnie               --|> AnimatronicoOriginal
+Chica                --|> AnimatronicoOriginal
+Foxy                 --|> AnimatronicoOriginal
+GoldenFreddy         --|> AnimatronicoOriginal
+ToyFreddy            --|> AnimatronicoToy
+ToyBonnie            --|> AnimatronicoToy
+ToyChica             --|> AnimatronicoToy
+Mangle               --|> AnimatronicoToy
+BalloonBoy           --|> AnimatronicoToy
+Marionette           --|> AnimatronicoToy
 
 Oficina      "1" *-- "1..*" Camara
 Oficina      "1" *-- "1"   Ventilacion
-Oficina      "1" *-- "1"   Puerta
+Oficina      "1" *-- "1"   Linterna
 Oficina      "1" *-- "1..*" Luz
-Oficina      "1" *-- "1"   Energia
 Oficina      "1" *-- "1"   Mascara
 Oficina      "1" *-- "1"   MusicBox
 Noche        "1" *-- "1"   Guardia
-Noche        "1" *-- "1"   Energia
 Noche        "1" *-- "1"   Bateria
+Noche        "1" *-- "1"   Turno
+Noche        "1" *-- "1"   Escenario
 Escenario    "1" *-- "1..*" Animatronico
 Pasillo      "1" *-- "1..*" Luz
-CajaMusical  "1" *-- "1"   MusicBox
+PrizeCorner  "1" *-- "1"   MusicBox
 
 Guardia      "1" o-- "1..*" Camara
 Guardia      "1" o-- "1"   Mascara
 Guardia      "1" o-- "1"   MusicBox
 Guardia      "1" o-- "1..*" Luz
-Guardia      "1" o-- "1"   Energia
+Guardia      "1" o-- "1"   Linterna
 Animatronico "1" o-- "0..1" Pasillo
 Animatronico "1" o-- "0..1" Ventilacion
 Animatronico "1" o-- "0..1" JumpScare
-Marionette   "1" o-- "1"   CajaMusical
-BalloonBoy   "1" o-- "1"   Energia
+Marionette   "1" o-- "1"   MusicBox
+Marionette   "1" o-- "1"   PrizeCorner
+BalloonBoy   "1" o-- "1"   Linterna
 Noche        "1" o-- "0..*" JumpScare
 
 @enduml
